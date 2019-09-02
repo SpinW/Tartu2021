@@ -1,0 +1,18 @@
+language: node_js
+dist: xenial
+node_js:
+- 9
+before_script:
+- export TRAVIS_REPO_NAME=${TRAVIS_REPO_SLUG#*/}
+- npm install -g decktape
+script:
+- sleep 2m
+- decktape reveal http://www.spinw.org/$TRAVIS_REPO_NAME $TRAVIS_REPO_NAME.pdf
+after_success:
+- git config --global user.email "travis@travis-ci.org"
+- git config --global user.name "Travis CI"
+- git add $TRAVIS_REPO_NAME.pdf
+- git commit -m 'Presentation update [ci skip]'
+- git push -f -q https://$GH_TOKEN@github.com/SpinW/$TRAVIS_REPO_NAME.git master
+
+# USE 'travis encrypt #### --add' for building
