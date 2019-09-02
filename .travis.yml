@@ -1,19 +1,21 @@
 language: node_js
 dist: xenial
 node_js:
-- 9
+  - 9
 before_script:
-- export TRAVIS_REPO_NAME=${TRAVIS_REPO_SLUG#*/}
-- npm install -g decktape
+  - export TRAVIS_REPO_NAME=${TRAVIS_REPO_SLUG#*/}
+  - npm install -g decktape
 script:
-- sleep 2m
-- decktape reveal http://www.spinw.org/$TRAVIS_REPO_NAME $TRAVIS_REPO_NAME.pdf
+  - sleep 2m
+  - decktape reveal http://www.spinw.org/$TRAVIS_REPO_NAME $TRAVIS_REPO_NAME.pdf
 after_success:
-- git config --global user.email "travis@travis-ci.org"
-- git config --global user.name "Travis CI"
-- git add $TRAVIS_REPO_NAME.pdf
-- git commit -m 'Presentation update [ci skip]'
-- git push -f -q https://$GH_TOKEN@github.com/SpinW/$TRAVIS_REPO_NAME.git master
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
+  - git config credential.helper "store --file=.git/credentials"
+  - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+  - git add $TRAVIS_REPO_NAME.pdf
+  - git commit -m 'Presentation update [ci skip]'
+  - git push origin HEAD:master
 env:
   global:
     secure: amkjvd6VaL/ncPcHJRBbToJosGKLoMx5Ug9bMnq71G8NtWA3tSbfk+uRQnHv7wfbkM3dJgMta1kHpiFQrdJK3ipL8VKho/qq0mfm2kZhAZ4FaDcXdSZYEhDj6DzrNpGcHNnN4M3FfcyFDiRMPfmSxrl+7oJxFnQ0gTf34x+Z8oO9dXCyfRFYGg2fd3WG4kQzKHPVoDRnLxOUMU8901aenq64V5/zLhmJPdxsrsDMgflii4irR/GxMoKSNoWgn6p2HUsOWqBXeZzwTLS89U1PBIZrPWmZREO1i6WAxYXbIOgHxP9LVjnDtBSLnHrwqdsA+IyCw9qudX9ggQMqG5iPMskPFNhByjBc3nDM6rcwt4hHK6iNKIIgdKuX39qA/Mt80b5+t+8aND6UMKPEnX6y64+X2cBKCDC3f+C7i+8ZA6QbvMF+O40SNMmR4jJzUxRxmazajzAyryEW/s3cIEQ8KUBfr/q1n4szWY4zCWrbnraONN7AhleV/PblJhpFtyfOvwKWr8UFV+0qC5/YtiJyjAyokCSkx+4FpjwYBg9b0RK2oSa7BqVd7BAHma7SbLV3oPXasoz17Q6+FTNJokKTioCwRCeBc6HGVR2iSDvUeEAvguCVzgO3X/xgMFLG9qMS5ymYspQ5V5UmgGOrTmGO+cye4SwxOCiMeDfhpAmZdn8=
