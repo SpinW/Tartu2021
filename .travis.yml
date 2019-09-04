@@ -1,21 +1,25 @@
 language: node_js
 dist: xenial
 node_js:
-- 9
+  - 9
+  
 before_script:
-- export TRAVIS_REPO_NAME=${TRAVIS_REPO_SLUG#*/}
-- npm install -g decktape
+  - export TRAVIS_REPO_NAME=${TRAVIS_REPO_SLUG#*/}
+  - npm install -g decktape
+  
 script:
-- sleep 2m
-- decktape reveal http://www.spinw.org/$TRAVIS_REPO_NAME $TRAVIS_REPO_NAME.pdf
-after_success:
-- git config --global user.email "travis@travis-ci.org"
-- git config --global user.name "Travis CI"
-- git config credential.helper "store --file=.git/credentials"
-- echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-- git add $TRAVIS_REPO_NAME.pdf
-- git commit -m 'Presentation update [ci skip]'
-- git push origin HEAD:master
+  - sleep 2m
+  - decktape reveal http://www.spinw.org/$TRAVIS_REPO_NAME $TRAVIS_REPO_NAME.pdf
+  
+before_deploy:
+  - cp presentation_base/src/deploy.sh ./
+  
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  skip_cleanup: true
+  on:
+    all_branches: true   
 env:
   global:
-  - secure: gO6W/yy6mUKHdMaKZN1zSHGNk48OgCBRh/uyl2k73UFzc9uanr2jbJ0Ci8gbnS/O+p9rDkAIcTwss5nN8oebNe8dwqnNwtls5tDom66KBBnh5Di0jnLNLqESQKSCsjm8cCmnVyNM8OvRHD0i/MW1n9MjOHdY1fksSlPKqgN+9UGCN7sH7vUDDUwZoXCiqlgTrgl4lMaK5+NcXdu/b+NmhDARuWn4n5rCW+yK84oevp5sGrfPN//x+WyDQHY8AEaZrNo6S1yzxQbVcevJbW5WRDkPsom02sa80zywtkFqP8t/anOYx7fPErsgpsmE5NIYWpU+uLwNvLuQxQOJ8YKTGF5XaYXrJ3rHxSevrt51BN4UhpoSOxJghhipnKMfDxo6yHTY1tLzxv6Im6gZ64EpiNu8QdWixkd7jV4OQCGrziQY4Xx+fLHMKVYD1bk8FccVsYnivG2cDQRuo8WoWFZ4jFmDMwqH/0p7BjdN4Hu/pzDtKMD2v8YW0a9DRP9wWTyK6Fo3AV5KzaBeoXxEn2OfpcugcNCWTBK/XSfqdJqX/cIZ5OR+E5KnoOfLYCbbiwTdR9dXsCEHIYIguirZjGQcLCrI6vyyJnTCo3eVEWYjxQfLb33BLYhp08lpEraF8TxVDa+doEcXF6+XUjJnF+JFHAXMFB47W7QZmRW5M8FztSA=
+    secure: MX9oWkBOohqVbZWd5nPg72BJC6f4JozjlQFHM3igB4AL2zzk+yHluGH0/MJ0I33BHgIbYInV1069aUgn7pG/F38b/t++o7b9fG5Y8PWXWixOIWpK713f1awdAfgn1r5hWgxMI3X2DDGLXx2q2HwhM06o/QL1EtiwRfwDfIduJ9p1D8hARvq73UrrSYrds1NPQIvTAPnuyPXCTZAGhSCx4fBMo2Pr6PNDvaw7+PXan20Y/4ZlKw24AhglJPDCafOCg+6+g1j5b9KNKkg59uXg6NwbJZ9fwZDhgOasoRer2GDeSgUK1Yo+kZhyKQbjjyrOfIIToe2lqrH07h26ne1ky7PtPQMJmAY10dWgFELdh6RB/mJXJx0nCwvbUaWdYZBXcIGwah5+d8IFytH43Ap/qiB8hMLjlPXGu/L8ndQ1qQI9Gpvd59tGBbQ7Y2q3czSDTbeXDOxj5cTFU8AvC0x5XPVC1HMgUEn87jaWJtIh3Anu3cFKnaB7RuosBUpqRPnvS8WN8JcWPN5v8rtN0HWOANJoY7yMmPVM2xMM95hkIbA+sO/uBG096LRmtED+BAkweDNQamOWPxJJW8jIG2qIf0UwB9tUFBW97FgdXZspb0kiZhJFu+a4L3VmLatFREOofuyaKOz+qql/u6+NZ1fyEpccJInufTX6T64k4d8Ie74=
