@@ -4,14 +4,14 @@ close all
 % Creating the lattice
 a0 = 1.000  % Angstrom
 %a0 = 0.52917721067  % Angstrom
-avec_Ang = [7.287 7.962 9.583]
+avec_Ang = [8.1354 9.4770 10.094]
 avec = avec_Ang / a0
 SDMTRLNO = spinw;
-SDMTRLNO.genlattice('lat_const', avec,'angled',[75.643 76.678 89.697],'sym','P -1');
+SDMTRLNO.genlattice('lat_const', avec,'angled',[84.66 67.17 65.36],'sym','P -1');
 plot(SDMTRLNO)
 
 % Adding atoms
-SDMTRLNO.addatom('r',[1.000  1.000  1.000],'S',2.000,'label','Co ','color','b')
+SDMTRLNO.addatom('r',[0.303020  0.480600 -0.478480 ],'S',2.000,'label','Ni ','color','b')
 plot(SDMTRLNO)
 
 % Creating the Spin-Hamiltonian
