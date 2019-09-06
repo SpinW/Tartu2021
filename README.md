@@ -1,15 +1,28 @@
-# BasicPresentation
 
-This is the first attempt at making a presentation using reveal.js and a template base.
+# Tartu 2019
 
-## Installation
+This is the presentation given at the NNSP-SwedNess Neutron School 2019, Tartu.
 
-`master.html` and `slides.html` should be copied from the `presentation_base` directory into the root directory and  `master.html` renamed to `index.html`.
+### Part 1
 
-## Using
+Introduction to Linear spin-wave theory, SpinW and basic examples.
 
-Slides are in `slides.html` and can be modified accordingly (duh!). 
+### Part 2.1
 
-## For publishing
+Introduction to the Organic Material Database (OMDB).
 
-This can be published by creating a gh-pages branch and will be served at `www.spinw.org/BasicPresentation`. An accompanying post should be created in the `spinw.github.io` repo under `pages/_presentations` so it is automaticall published from the main site.
+### Part 2.2
+
+Using SpinW to model magnetic materials from the OMDB.
+
+## Tutors
+
+- Simon Ward - ESS DMSC
+- Johan Hellsvik - Senior Postodc Nordita
+
+## Viewing
+The presentation can be found online at [http://spinw.org/Tartu2019](http://spinw.org/Tartu2019)
+
+An up to date pdf can be found at [http://spinw.org/Tartu2019/Tartu2019.pdf](http://spinw.org/Tartu2019/Tartu2019.pdf)
+
+The PDF status is [![Build Status](https://travis-ci.org/SpinW/Tartu2019.svg?branch=master)](https://travis-ci.org/SpinW/Tartu2019)
