@@ -12,7 +12,7 @@ SDMTRLNO.genlattice('lat_const', avec,'angled',[90.00  90.00  90.00],'sym','P 21
 plot(SDMTRLNO)
 
 % Adding atoms
-SDMTRLNO.addatom('r',[ 0.08183  0.80958  0.37295],'S',1.000,'label','Co ','color','b')
+SDMTRLNO.addatom('r',[ 0.08183  0.80958  0.37295],'S',1.000,'label','Co2+','color','b')
 plot(SDMTRLNO)
 
 % Creating the Spin-Hamiltonian
