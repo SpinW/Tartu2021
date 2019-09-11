@@ -1,0 +1,214 @@
+<section class="subsection color--radiant" id="matlab_header">
+    <div class="grid-wrapper">
+        <div class="logo"></div>
+        <h1>Crash course in MATLAB</h1>
+        <div class="description">
+            <p>SpinW runs in MATLAB and Python, but today we will be focusing on MATLAB.</p>
+            <p>The concepts.... Arrays, Indexing, Objects</p>
+        </div>
+    </div>
+</section>
+
+<section class="blank color--dark" id="matlab_arrays1">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Arrays - Numeric</div>
+        </div>
+        <content>
+            <p>They are created using square brackets – comma or space separation for columns in a row, semi-colon separation for new rows, higher dimensions using indexing / repmat command
+            </p>
+            <h2>1D arrays</h2>
+            <figure class="code">
+                    <pre><code class="matlab">w_1row = [1,2,3];
+w_1col = [1;2;3];
+w_1col_to_1row = [1;2;3]’;
+</code></pre>
+            </figure>
+            <br>
+            <h2>2D arrays</h2>
+            <figure class="code">
+                    <pre><code class="matlab">w_rowcol = [1,2,3;4,5,6];</code></pre>
+            </figure>
+            <br>
+            <h2>3D arrays</h2>
+            <figure class="code">
+                    <pre><code class="matlab">w3d = repmat(w_rowcol,[1,1,3])
+w3d(:,:,1) = w_rowcol;  w3d(:,:,2) = w_rowcol+2;
+</code></pre>
+            </figure>
+        </content>
+    </div>
+</section>
+
+<section class="blank color--dark" id="matlab_arrays2">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Arrays - Strings</div>
+        </div>
+        <content>
+            <h2>Creating Strings</h2>
+            <figure class="code">
+                <pre><code class="matlab">my_string = ‘hello world’;</code></pre>
+            </figure>
+            <p>Strings arrays are concatenated similar to numeric arrays....</p>
+            <figure class="code">
+                    <pre><code class="matlab">my_string2 = [my_string, ’ hello everyone’];</code></pre>
+            </figure>
+        </content>
+    </div>
+</section>
+
+<section class="blank color--dark" id="matlab_arrays3">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Arrays - Structured</div>
+        </div>
+        <content>
+            <p>Structure arrays provide a way of storing more general information, referenced by <i>fields</i>.</p>
+            <br>
+            <figure class="code">
+                <pre><code class="matlab">w = struct();
+w.tom = [1,2,3];
+w.dick = ‘hello world’;
+w.harry = [4,5,6,7;8,9,10,11];
+</code></pre>
+            </figure>
+        </content>
+    </div>
+</section>
+
+<section class="blank color--dark" id="matlab_arrays4">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Arrays - Cells</div>
+        </div>
+        <content>
+            <p>Cell arrays are another generic data storage mechanism, with a matrix-like structure.</p>
+            <br>
+            <figure class="code">
+                <pre><code class="matlab">cell1 = {[1,2,3], ’hello_world’, [4,5,6;7,8,9]};
+cell2 = {[1,23], ’hello_world’; [4,5,6;7,8,9], cell1};
+</code></pre>
+            </figure>
+            <br>
+            <p>Note that the cell array is described by a curly bracket, not a square bracket!</p>
+        </content>
+    </div>
+</section>
+
+
+<section class="blank color--dark" id="matlab_indexing1">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Indexing</div>
+        </div>
+        <content>
+            <p>Arrays can be indexed. Note that the ordering is the reverse to Python!.</p>
+            <br>
+            <figure class="code">
+                <pre><code class="matlab">w1 = [1,3,5,7]</code></pre>
+            </figure>
+            <p>So <code>w1(3) = 5</code> etc.</p>
+            <figure class="code">
+                <pre><code class="matlab">wcell = {‘hello’,’world’,[1,2,3]}</code></pre>
+            </figure>
+            <p>So <code>wcell{3} = [1,2,3]</code> etc.</p>
+            <p>In 2D:</p>
+            <figure class="code">
+                <pre><code class="matlab">w2 = [1,2,3; 4,5,6]</code></pre>
+            </figure>
+            <p>So <code>w2(2,3) = 6</code></p>
+            <figure class="code">
+                <pre><code class="matlab">w2(:,[1:2]) = [1,2;4,5]
+w2(:,[1,3]) = [1,3;4,6]
+                </code></pre>
+            </figure>
+        </content>
+    </div>
+</section>
+
+
+<section class="blank color--dark" id="matlab_objects1">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Objects and methods</div>
+        </div>
+        <content>
+            <p>Objects are data structures with defined properties, and internal self-consistency checks.</p>
+            <ul>
+                <li>Cell arrays, structure arrays etc. are examples of Matlab’s built-in objects.</li>
+                <li>You can define your own, which is what we have done with SpinW</li>
+            </ul>
+            <br>
+            <p>You create a SpinW object with:</p>
+            <figure class="code">
+                <pre><code class="matlab">s = spinw();</code></pre>
+            </figure>
+            <br>
+            <p>Methods are the functions that work on defined objects.</p>
+            <p>SpinW has many methods. e.g.</p>
+            <figure class="code">
+                <pre><code class="matlab">s.plot()</code></pre>
+            </figure>
+        </content>
+    </div>
+</section>
+
+<section class="blank color--dark" id="matlab_objects2">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Objects and methods</div>
+        </div>
+        <content>
+            <h2>Getting help for objects and methods</h2>
+            <p>To find all the methods working on an object, use the <code>methods</code> function which the name of the object class.</p>
+            <figure class="code">
+                <pre><code class="matlab">methods(spinw)</code></pre>
+            </figure>
+            <br>
+            <p>Get help if you already know the name of a particular method for an object class:</p>
+            <figure class="code">
+                <pre><code class="matlab">help spinw/addatom
+doc spinw/addatom</code></pre>
+            </figure>
+        </content>
+    </div>
+</section>
+
+<section class="blank color--dark" id="gettingHelpAgain">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Getting help</div>
+        </div>
+        <content>
+            <h2>Function help</h2>
+            <p>For any function that starts with <code>sw_*</code> use:<br><code>help sw_*</code></p>
+
+            <h2>SpinW class methods</h2>
+            <p>for spinw class methods use: <br><code>help spinw.function_name</code>.<br>For help on plotting commands, use:<br><code>help swplot</code>.</p>
+            <h2>Online Documentation</h2>
+            <p>All help can be found on <a href="http://www.spinw.org" target="_blank">http://www.spinw.org</a> or <a href="https://spinw.github.io/spinwdoc" target="_blank">https://spinw.github.io/spinwdoc</a></p>
+        </content>
+    </div>
+</section>
+
+<section class="quote color--midnight" id="learnByDoing">
+    <div class="grid-wrapper">
+        <div class="logo"></div>
+        <blockquote>
+            <p>
+                For the things we have to learn before we can do them, we learn by doing them.
+            </p>
+            <hr>
+            <cite>Aristotle</cite>
+        </blockquote>
+    </div>
+</section>
