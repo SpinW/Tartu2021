@@ -20,6 +20,30 @@
         </div>
     </section>
 
+<section class="subsection color--light" id="spinWWorkflow">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">SpinW Workflow</div>
+        </div>
+        <content>
+            <div class="container" style="  display: grid;
+                                            grid-template-rows: 80% 5% auto;
+                                            height: 100%;">
+                <div style="grid-row-start:1; grid-row-end:2;">
+                    <img src="images/spinw_link.png" style="display: block;
+  margin-left: auto;
+  margin-right: auto; height: 100%">
+                </div>
+                <div style="grid-row-start:3; grid-row-end:4;">
+                    <p>To do a calculation, you need 3 parts. <i>Crystal structure, exchange structure, magnetic structure</i></p>
+                </div>
+            </div>
+        </content>
+    </div>
+</section>
+
+
     <section class="subsection color--light" id="triK_OneThird">
         <div class="grid-wrapper">
             <div class="logo"></div>
@@ -34,7 +58,7 @@
         <div class="grid-wrapper">
             <div class="header">
                 <div class="logo"></div>
-                <div class="section">Creating the lattice</div>
+                <div class="section">Creating the lattice (<i>Crystal Structure</i>)</div>
             </div>
             <content>
                 <h2>Creating the lattice</h2>
@@ -72,34 +96,51 @@ plot(tri)</code></pre>
         </div>
     </section>
 
-    <section class="blank color--dark" id="Example1_3">
+    <section class="blank color--dark" id="Example1_3p1">
         <div class="grid-wrapper">
             <div class="header">
                 <div class="logo"></div>
-                <div class="section">Spin Hamiltonian</div>
+                <div class="section">Spin Hamiltonian - (<i>Exchange Structure</i>)</div>
             </div>
             <content>
                 <h2>Creating the Spin-Hamiltonian</h2>
                 <p>We create an antiferromagnetic first neighbor Hamiltonian plus easy plane single ion anisotropy</p>
-                <figure class="code">
-                    <pre><code class="matlab">A0 = -0.1;
-tri.addmatrix('label','J1','value',1)
-tri.addmatrix('label','A','value',[0 0 0;0 0 0;0 0 A0])
-
-tri.gencoupling
-
-tri.addcoupling('mat','J1','bond',1)
-tri.addaniso('A')
-
-plot(tri,'range',[3 3 1/2],'cellMode','inside')</code></pre>
-                </figure>
-                <p>Red ellipsoids represent the single ion anisotropy on the plot (equienergetic surface)</p>
-                <h3>Questions:</h3>
-                <p><i>What have we done in each code part?<br>Examine the plot and test different values of
-                    <code>A0</code> with different signs</i></p>
+                $$
+                H = \sum_{mi,nj} \mathbf{S}_{mi}^T \cdot J_{mi} \cdot \mathbf{S}_{nj} + \sum_{mi}\mathbf{S}_{mi}^T \cdot A_i \cdot \mathbf{S}_{mi}
+                $$
+                <p>Where there is only one interaction of value <code>J = 1</code> and easy plane single ion anisotropy <code>A = -0.1</code></p>
             </content>
         </div>
     </section>
+
+<section class="blank color--dark" id="Example1_3p2">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Spin Hamiltonian - (<i>Exchange Structure</i>)</div>
+        </div>
+        <content>
+            <h2>Creating the Spin-Hamiltonian</h2>
+            <p>We create implement this in code with:</p>
+            <figure class="code">
+                    <pre><code class="matlab">A0 = -0.1;
+J1 = 1;
+tri.addmatrix('label','J1','value',J1)
+tri.addmatrix('label','A','value',[0 0 0;0 0 0;0 0 A0])</code></pre>
+                <p>We then assign these matrices to bonds:</p>
+                <figure class="code">
+                    <pre><code class="matlab">tri.gencoupling
+tri.addcoupling('mat','J1','bond',1)
+tri.addaniso('A')</code></pre>
+            </figure>
+            <p>Red ellipsoids represent the single ion anisotropy on the plot (equienergetic surface)</p>
+            <h3>Questions:</h3>
+            <p><i>What have we done in each code part?<br>Examine the plot and test different values of
+                <code>A0</code> with different signs</i></p>
+        </content>
+    </div>
+</section>
+
 
     <section class="blank color--dark" id="Example1_4">
         <div class="grid-wrapper">
@@ -125,7 +166,7 @@ plot(tri, 'range', [3 3 1/2], 'cellMode', 'inside', 'magColor', 'red')</code></p
         <div class="grid-wrapper">
             <div class="header">
                 <div class="logo"></div>
-                <div class="section">Spin wave dispersion</div>
+                <div class="section">Spin wave dispersion - (<i>Using LSWT</i>)</div>
             </div>
             <content>
                 <h2>Calculating the spin wave dispersion</h2>
@@ -178,7 +219,7 @@ caxis([0 3])</code></pre></div>
             <div class="logo"></div>
             <h1>$k=0$ magnetic structure</h1>
             <div class="description">
-                Let's try this with a $k=0$ magnetic structure
+                Let's try this with a $k=0$ magnetic structure and explore SpinW deeper
             </div>
         </div>
     </section>
