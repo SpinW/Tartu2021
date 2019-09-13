@@ -7,7 +7,8 @@
         <div class="content">
             <h1>Using the OMDB and SpinW</h1>
             <div class="description">
-                The organic materials database is an open access electronic structure database for 3-dimensional organic crystals. It provides tools for search queries based on data-mining and machine learning techniques.
+                The organic materials database is an open access electronic structure database for 3-dimensional organic
+                crystals. It provides tools for search queries based on data-mining and machine learning techniques.
             </div>
         </div>
         <div class="credit">
@@ -38,7 +39,10 @@
         <div class="logo"></div>
         <h1>Modeling Co(2-pymS)$_2$ (2-pymSH = 2-mercaptopyrimidine)</h1>
         <div class="description">
-            The OMDB link is: <a href="https://omdb.mathub.io/material/cod/7018178" style="color: white" target="_blank"><b>here</b></a>, paper is: <a href="https://pubs.rsc.org/en/content/articlelanding/2012/DT/c2dt11738j" style="color: white" target="_blank"><b>here</b></a> and SpinW tutorial file: <a href="matlab/spinW7018178AFM.m" style="color: white"><code>spinW7018178AFM.m</code></a>
+            The OMDB link is: <a href="https://omdb.mathub.io/material/cod/7018178" style="color: white"
+                                 target="_blank"><b>here</b></a>, paper is: <a
+                href="https://pubs.rsc.org/en/content/articlelanding/2012/DT/c2dt11738j" style="color: white"
+                target="_blank"><b>here</b></a>
         </div>
     </div>
 </section>
@@ -50,29 +54,283 @@
             <div class="section">Creating the lattice (<i>Crystal Structure</i>)</div>
         </div>
         <content>
-            <p>Open up the <a href="https://omdb.mathub.io/material/cod/7018178" target="_blank"><b>OMDB link</b></a>, so you have all the necessary parameter information.</p>
+            <p>Open up the <a href="https://omdb.mathub.io/material/cod/7018178" target="_blank"><b>OMDB link</b></a>,
+                so you have all the necessary parameter information.</p>
             <h2>Creating the lattice</h2>
             <ul>
                 <li>Using tutorial 1 as a template, create a SpinW object</li>
                 <li>Define the lattice. As a hint, you will have to specify the symmetry of <i>P 21 21 21</i></li>
+            </ul>
+            <span class="fragment fade-in-then-semi-out">
+                <figure class="code">
+                    <pre><code class="matlab">s = spinw();
+s.genlattice('lat_const', [# #, #], 'angled', [#,  #,  #], 'sym', #)</code></pre>
+                </figure>
+            </span>
+            <br>
+            <ul>
                 <li>Add an atom of Co$^{2+}$ at <code>[0.08183, 0.80958, 0.37295]</code> where the spin is 1</li>
             </ul>
             <br>
             <span class="fragment fade-in-then-semi-out">
                 <figure class="code">
-                    <pre><code class="matlab">tri = spinw;
-tri.genlattice('lat_const',[3 3 4],'angled',[90 90 120])
-plot(tri)</code></pre>
+                    <pre><code class="matlab">s.addatom('r', [#, #, #], 'S', #, 'label', '#', 'color','b')
+s.plot()</code></pre>
                 </figure>
             </span>
             <br>
             <h3>Questions:</h3>
             <i>
-            <ul>
-                <li>Plot the structure. How many Cobalt atoms have been generated?</li>
-                <li>Why are they in that position?</li>
-            </ul>
+                <ul>
+                    <li>Plot the structure. How many Cobalt atoms have been generated?</li>
+                    <li>Why are they in that position?</li>
+                    <li>Compare with the image on the OMDB site.</li>
+                </ul>
             </i>
+        </content>
+    </div>
+</section>
+
+
+<section class="blank color--dark" id="Example3_2">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Spin Hamiltonian - (<i>Exchange Structure Pt1</i>)</div>
+        </div>
+        <content>
+            <h2>Generate Bonds</h2>
+            <ul>
+                <li>Use <code>gencoupling</code> to generate all bonds with a cutoff of 50 angstroms.</li>
+                <li>Print out the first 50 bonds.</li>
+            </ul>
+            <br>
+            <span class="fragment fade-in-then-semi-out">
+                <figure class="code">
+                    <pre><code class="matlab">s.gencoupling('maxDistance', #)
+s.table('bond',#)</code></pre>
+                </figure>
+            </span>
+        </content>
+    </div>
+</section>
+
+
+<section class="blank color--dark" id="Example3_3">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Spin Hamiltonian - (<i>Exchange Structure Pt2.1</i>)</div>
+        </div>
+        <content>
+            <h2>Exchange interactions</h2>
+            <p>From the OMDB website, the exchange interactions are:</p>
+            <br>
+            <span class="fragment fade-in-then-semi-out">
+                <table>
+          <tbody><tr>
+            <th>  i  </th>
+            <th>  j </th>
+            <th>  r [Å] </th>
+            <th> J<sub>ij</sub> [meV] </th>
+          </tr>
+                    <tr>
+            <td> 1 </td>
+            <td> 4 </td>
+            <td>
+              5.80            </td>
+            <td> -6.92 </td>
+          </tr>
+                    <tr>
+            <td> 3 </td>
+            <td> 2 </td>
+            <td>
+              5.80            </td>
+            <td> -6.92 </td>
+          </tr>
+                    <tr>
+            <td> 1 </td>
+            <td> 3 </td>
+            <td>
+              5.77            </td>
+            <td> -6.90 </td>
+          </tr>
+                    <tr>
+            <td> 2 </td>
+            <td> 4 </td>
+            <td>
+              5.77            </td>
+            <td> -6.90 </td>
+          </tr>
+                    <tr>
+            <td> 1 </td>
+            <td> 2 </td>
+            <td>
+              10.18            </td>
+            <td> 0.08 </td>
+          </tr>
+                    <tr>
+            <td> 4 </td>
+            <td> 3 </td>
+            <td>
+              10.18            </td>
+            <td> 0.08 </td>
+          </tr>
+                    <tr>
+            <td> 2 </td>
+            <td> 1 </td>
+            <td>
+              9.15            </td>
+            <td> 0.07 </td>
+          </tr>
+                    <tr>
+            <td> 3 </td>
+            <td> 4 </td>
+            <td>
+              9.15            </td>
+            <td> 0.07 </td>
+          </tr>
+                    <tr>
+            <td> 1 </td>
+            <td> 2 </td>
+            <td>
+              9.91            </td>
+            <td> 0.05 </td>
+          </tr>
+                    <tr>
+            <td> 3 </td>
+            <td> 4 </td>
+            <td>
+              9.91            </td>
+            <td> 0.05 </td>
+          </tr>
+                  </tbody></table>
+            </span>
+        </content>
+    </div>
+</section>
+
+<section class="blank color--dark" id="Example3_4">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Spin Hamiltonian - (<i>Exchange Structure Pt2.2</i>)</div>
+        </div>
+        <content>
+            <h2>Implementing the exchange interactions</h2>
+            <p>Now we need to create the exchange matrices and assign them to bonds.</p>
+            <ul>
+                <li>Use <code>addmatrix</code> to add a matrix to your SpinW object</li>
+                <li>Use <code>addcoupling</code> to assign the above matrix to a bond</li>
+            </ul>
+            <p><b>Note the translation of bonds between OMDB and SpinW!</b></p>
+            <br>
+            <span class="fragment fade-in-then-semi-out">
+                <figure class="code">
+                    <pre><code class="matlab">s.addmatrix('label', '##', 'value', ##, 'color', '##')
+s.addcoupling('mat','##','bond',#)</code></pre>
+                </figure>
+            </span>
+            <br>
+            <h3>Questions:</h3>
+            <i>
+                <ul>
+                    <li>Why are there 10 exchanges on the OMDB site? What are they in SpinW?</li>
+                    <li>How does this effect the value of the exchange?</li>
+                </ul>
+            </i>
+        </content>
+    </div>
+</section>
+
+<section class="blank color--dark" id="Example3_5">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Magnetic structure</div>
+        </div>
+        <content>
+            <h2>Create the magnetic structure:</h2>
+            <p>The magnetic structure of this compound can be described in the chemical unit cell where the spins are anti-ferromagnetic in the z-direction.</p>
+            <ul>
+                <li>The spins can be given using the <i>'direct'</i> option.</li>
+                <li>The spins are <code>0 0 0 0; 0 0 0 0; 1 1 -1 -1</code></li>
+            </ul>
+            <br>
+            <span class="fragment fade-in-then-semi-out">
+            <figure class="code">
+                    <pre><code class="matlab">s.genmagstr('mode', '###', 'S', ###)</code></pre>
+            </figure>
+            </span>
+            <p>Careful: the given spin vector is column vector!</p>
+            <ul>
+                <li>Plot the magnetic structure and verify it is as expected.</li>
+            </ul>
+        </content>
+    </div>
+</section>
+
+<section class="blank color--dark" id="Example3_6">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Solve the Hamiltonian using LSWT</div>
+        </div>
+        <content>
+            <h2>Calculate the spectrum</h2>
+            <p>We can calculate the spin-wave spectrum at Q-points using the <code>spinwave</code> function. On the OMDB website we have high symmetry trajectories throughout the Brillouin zone. The sequence of high symmetry points are for eight legs in the BZ, from \Gamma to T. The coordinates from these high symmetry can be read  out from the <code>KPOINTS.gz</code> file that are posted on the OMDB page. Use 500 points along these trajectories to get the Spin-Spin correlations. These need to be converted into an observable and plotted using <code>sw_plot</code>.</p>
+            <span class="fragment fade-in-then-semi-out">
+            <figure class="code">
+                <pre><code class="matlab">spec = s.spinwave({[ _StartingPoint_ ], [ _trajectory1_ ], [ _trajectory2_ ] ...
+    [ _trajectory3_ ], [ _trajectory4_ ], ...
+    [ _trajectory5_ ], [ _trajectory6_ ], ...
+    [ _trajectory7_ ], [ _trajectory8_ ] ...
+    500});
+sw_plotspec(spec, 'mode', 'disp', 'imag', true, 'colormap', [0 0 0], 'colorbar', false)</code></pre>
+            </figure>
+            </span>
+            <br>
+            <h3>Questions:</h3>
+            <i>
+                <ul>
+                    <li>How does this compare with the result on the OMDB page? </li>
+                    <li>Comment on the results and suggest a reason for the discrepancies.</li>
+                </ul>
+            </i>
+        </content>
+    </div>
+</section>
+
+<section class="pattern--blue-wind subsection color--ice" id="Example4_0">
+    <div class="grid-wrapper">
+        <div class="logo"></div>
+        <h1>Modeling C$_4$H$_6$MnO$_6$</h1>
+        <div class="description">
+            The OMDB link is: <a href="https://omdb.mathub.io/material/cod/7203358" style="color: white"
+                                 target="_blank"><b>here</b></a>, paper is: <a
+                href="https://pubs.rsc.org/en/content/articlelanding/2006/JM/B603014A" style="color: white"
+                target="_blank"><b>here</b></a>
+        </div>
+    </div>
+</section>
+
+<section class="blank color--dark" id="Example4_1">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Do it yourself</div>
+        </div>
+        <content>
+            <h2>Generate the spin-wave spectra of C$_4$H$_6$MnO$_6$</h2>
+            <p>In the previous section we showed a step by step guide on how to use OMDB to model a real material. Now it's up to you to model C$_4$H$_6$MnO$_6$. Remember the following steps:</p>
+            <ul>
+                <li>Generate the crystal structure.</li>
+                <li>Generate the Hamiltonian.</li>
+                <li>Generate the magnetic structure (<i>Hint, it's the same as in the previous example</i>)</li>
+                <li>Plot and comment on the results.</li>
+                <br>
+            </ul>
+            <div style="text-align: center;"><h3>Don't be afraid to ask Johan and Simon for help.</h3></div>
         </content>
     </div>
 </section>
