@@ -2,19 +2,9 @@
 <section class="subsection color--radiant" id="tutorial1_head">
     <div class="grid-wrapper">
         <div class="logo"></div>
-        <h1>Tutorials 1</h1>
+        <h1>Introductory Tutorials</h1>
         <div class="description">
-            Getting started in SpinW - Refer to Kim Lefmanns talk for spinwave theory.
-        </div>
-    </div>
-</section>
-
-<section class="subsection color--radiant" id="Example1_0">
-    <div class="grid-wrapper">
-        <div class="logo"></div>
-        <h1>Excitations on a triangular lattice</h1>
-        <div class="description">
-            Download the script here: <a href="matlab/sw_tutorial_01.m" style="color: white"><code>sw_tutorial_01.m</code></a>
+            Getting started in SpinW - Referring to Kim Lefmanns talk for spinwave theory.
         </div>
     </div>
 </section>
@@ -42,6 +32,25 @@
     </div>
 </section>
 
+<section class="subsection color--radiant" id="Example0_0">
+    <div class="grid-wrapper">
+        <div class="logo"></div>
+        <h1>The FM spin chain - A recap</h1>
+        <div class="description">
+            Download the script here: <a href="matlab/sw_tutorial_00.m" style="color: white"><code>sw_tutorial_00.m</code></a>
+        </div>
+    </div>
+</section>
+
+<section class="subsection color--radiant" id="Example1_0">
+    <div class="grid-wrapper">
+        <div class="logo"></div>
+        <h1>Excitations on a triangular lattice</h1>
+        <div class="description">
+            Download the script here: <a href="matlab/sw_tutorial_01.m" style="color: white"><code>sw_tutorial_01.m</code></a>
+        </div>
+    </div>
+</section>
 
 <section class="subsection color--light" id="triK_OneThird">
         <div class="grid-wrapper">
@@ -231,7 +240,7 @@ caxis([0 3])</code></pre></div>
             </div>
             <content>
                 <h2>$k = 0$ magnetic structure</h2>
-                <p>Duplicate the original object using the <code>.copy()</code> command,<br><i>Why are we using the <code>.copy()</code> command?</i></p>
+                <p>Duplicate the original object using the <code>.copy()</code> command,<br>/p>
                 <figure class="code">
                     <pre><code class="matlab">triNew = copy(tri);
 triNew.genmagstr('mode','rotate','n',[0 0 1])
@@ -243,7 +252,7 @@ plot(triNew,'range',[3 3 1])</code></pre>
                 <p>Compare the energy per spin of the old magnetic structure and the new magnetic structure using the
                     <code>spinw.energy()</code> function.</p>
                 <h3>Questions:</h3>
-                <p><i>How does the magnetic structures compare?<br>Are they the same?<br>Why?</i></p>
+                <p><i>Why are we using the <code>.copy()</code> command?<br>How does the magnetic structures compare?<br>Are they the same?</i></p>
             </content>
         </div>
     </section>
