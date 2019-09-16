@@ -1,32 +1,4 @@
-%% Install SpinW
-% Download the latest version of SpinW from https://github.com/SpinW/spinw/releases
-% Or use the Add-ons option on the MATLAB toolbar.
-% Unzip the file and run install_spinw from the main directory
-%
-% Verify that spinw is installed:
-
-
-%% Help on SpinW
-% Use the help command to get help on any SpinW function. For any function
-% that starts with 'sw_' use help swfiles, for spinw class methods use help
-% spinw.function_name. For help on plotting commands, use help swplot.
-
-help swfiles
-
-% To find the location of the spinw library use
-sw_rootdir
-
-% To open any of the functions in the Matlab editor, use
-edit spinw.plot
-
-% To look at any of the spinw object properties, double click on the
-% "Workspace" view on the name of the object. Also the data files
-% (symmetry.dat, atom.dat, color.dat, magion.dat) can be easily edited, for
-% example
-
-edit symmetry.dat
-
-%% Lattice
+%% Lattice - Define the crystal structure - Part 1 
 % we create a triangular lattice
 
 tri = spinw;
@@ -42,7 +14,7 @@ plot(tri)
 % by pressing the corresponding button on the top.
 
 
-%% Atoms
+%% Atoms  - Define the crystal structure - Part 2
 % we add 1 atom at the origin of the unit cell, spin-3/2 Cr3+ ion
 
 tri.addatom('r',[0 0 0],'S',3/2,'label','MCr3')
@@ -51,7 +23,7 @@ swpref.setpref('fontsize',12)
 plot(tri)
 
 
-%% Spin-Hamiltonian
+%% Define the Spin-Hamiltonian (Exchange Structure)
 % we create an antiferromagnetic first neighbor Hamiltonian
 % plus easy plane single ion anisotropy
 % red ellipsoids represent the single ion anistropy on the plot
@@ -74,7 +46,7 @@ swpref.setpref('nmesh',0,'npatch',10)
 plot(tri,'range',[3 3 1/2],'cellMode','inside')
 
 
-%% Magnetic structure
+%% Define the Magnetic structure
 % the ground state magnetic structure of the above Hamltonian is a spiral,
 % with propagation vector of (1/3,1/3,0). We define the plane of the
 % spiral as the ab plane
@@ -86,8 +58,8 @@ tri.genmagstr('mode','helical','S',[1;0;0],'k',[1/3 1/3 0],'n',[0 0 1],'nExt',[1
 plot(tri,'range',[3 3 1/2],'cellMode','inside','magColor','red')
 
 
-%% Spin wave dispersion
-% we calculate the spin wave dispersion along the (H,H,0) high symmetry
+%% Calculate the spin-wave dispersion
+% We calculate the spin wave dispersion along the (H,H,0) high symmetry
 % direction
 % How many number of modes are there and why?
 % What does the red line mean?
