@@ -28,9 +28,9 @@ plot(tri)
 % plus easy plane single ion anisotropy
 % red ellipsoids represent the single ion anistropy on the plot
 % (equienergetic surface)
-% examine the plot and test different values of A0 with different signs
+% Examine the plot and test different values of A0 with different signs
 
-A0 = -0.1;
+A0 = 0.1;
 
 tri.addmatrix('label','J1','value',1)
 tri.addmatrix('label','A','value',[0 0 0;0 0 0;0 0 A0])
@@ -41,8 +41,10 @@ tri.gencoupling
 tri.addcoupling('mat','J1','bond',1)
 tri.addaniso('A')
 
-% make good quality plot
-swpref.setpref('nmesh',0,'npatch',10)
+% Make good quality plot
+swpref.setpref('nmesh',5,'npatch',10)
+% Play with the 'nmesh' property. 
+
 plot(tri,'range',[3 3 1/2],'cellMode','inside')
 
 
@@ -67,7 +69,7 @@ plot(tri,'range',[3 3 1/2],'cellMode','inside','magColor','red')
 % Did you got any warning?
 %
 
-spec = tri.spinwave({[0 0 0] [1 1 0] 500},'hermit',false);
+spec = tri.spinwave({[0 0 0] [1 1 0] 500});
 
 figure
 sw_plotspec(spec,'mode','disp','imag',true,'colormap',[0 0 0],'colorbar',false)
@@ -80,14 +82,14 @@ axis([0 1 0 5])
 %
 % BUT!
 %
-% 1. we  can calculate the neutron scattering cross section
+% 1. we can calculate the neutron scattering cross section
 % 2. we can select one of the components S_alpha_beta(Q,w)
 % 3. we can sum up the diagonal S_alpha_alpha(Q,w)
 %
 % What do you see? Where is the largest intensity? How is it related to the
 % magnetic propagation vector?
 %
-% Why ar esome modes gapped? Which correlations are gapped?
+% Why are some modes gapped? Which correlations are gapped?
 %
 % Why do we have Szz?
 %
