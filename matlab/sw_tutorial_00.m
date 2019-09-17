@@ -47,8 +47,8 @@ edit symmetry.dat
 % the lattice.
 
 FMchain = spinw; 
-FMchain.genlattice('lat_const', [3 8 8],'angled', [90 90 90])
-FMchain.addatom('r', [0 0 0], 'S', 1,'label','MCu1','color','blue')
+FMchain.genlattice('lat_const', [3 8 8], 'angled', [90 90 90])
+FMchain.addatom('r', [0 0 0], 'S', 1, 'label', 'MCu1', 'color', 'blue')
 FMchain.plot('range',[3 1 1])
 
 %% Determine the list of bonds based on length
@@ -57,10 +57,10 @@ FMchain.plot('range',[3 1 1])
 % according to increasing length, all bonds are equivalent that has the
 % same length within an error bar (0.001 Angstrom by default).
 
-FMchain.gencoupling('maxDistance',7)
+FMchain.gencoupling('maxDistance', 7)
 
 % list the 1st and 2nd neighbor bonds
-FMchain.table('bond',1:2)
+FMchain.table('bond', 1:2)
 
 %% Defining the spin Hamiltonian
 % We create a matrix with a label 'Ja', ferromagnetic heisenberg
@@ -68,12 +68,12 @@ FMchain.table('bond',1:2)
 % spin-spin exchange interaction: J*S(i)*S(i+1). And plot the crystal
 % structure with the added bonds.
  
-FMchain.addmatrix('value',-eye(3),'label','Ja','color','green')
+FMchain.addmatrix('value', -eye(3), 'label', 'Ja', 'color', 'green')
 % Notice we have created a 3x3 matrix for the exchange. This can be used
 % for arbitary exchanges. If a single value is used, a heisenberg exchange
 % is created.
-FMchain.addcoupling('mat','Ja','bond',1);
-plot(FMchain,'range',[3 0.2 0.2],'cellMode','none','baseMode','none')
+FMchain.addcoupling('mat', 'Ja', 'bond', 1);
+plot(FMchain, 'range', [3 0.2 0.2], 'cellMode', 'none', 'baseMode', 'none')
 
 %% Definition of FM magnetic structure
 % The classical magnetic ground state of the previously defined Hamiltonian
@@ -85,11 +85,11 @@ plot(FMchain,'range',[3 0.2 0.2],'cellMode','none','baseMode','none')
 % * an arbitrary normal vector to the spin n = [1 0 0]
 %
 
-FMchain.genmagstr('mode','direct', 'k',[0 0 0],'n',[1 0 0],'S',[0; 1; 0]); 
+FMchain.genmagstr('mode', 'direct', 'k', [0 0 0], 'n', [1 0 0], 'S', [0; 1; 0]); 
 
 disp('Magnetic structure:')
 FMchain.table('mag')
-plot(FMchain,'range',[3 0.9 0.9],'baseMode','none','cellMode','none')
+plot(FMchain,'range', [3 0.9 0.9], 'baseMode', 'none', 'cellMode', 'none')
 
 %% The energy of the ground state per spin
 % The spinw.energy() function gives the ground state energy per spin, the
@@ -105,27 +105,28 @@ FMchain.energy()
 % the value of the correlation function with the 1-Q^2 neutron scattering
 % cross section in units of hbar/spin.
 
-FMspec = FMchain.spinwave({[0 0 0] [1 0 0]},'hermit',false);
+FMspec = FMchain.spinwave({[0 0 0], [1 0 0]});
 FMspec = sw_neutron(FMspec); 
-FMspec = sw_egrid(FMspec,'component','Sperp');
+FMspec = sw_egrid(FMspec, 'component', 'Sperp');
 
 figure;
-subplot(2,1,1)
-sw_plotspec(FMspec,'mode',1,'colorbar',false)  
+subplot(2, 1, 1)
+sw_plotspec(FMspec, 'mode', 1, 'colorbar', false)  
 axis([0 1 0 5])
-subplot(2,1,2)
-sw_plotspec(FMspec,'mode',2)  
+subplot(2, 1, 2)
+sw_plotspec(FMspec, 'mode', 2)  
 axis([0 1 0 2])
-swplot.subfigure(1,3,1)
+swplot.subfigure(1, 3, 1)
 
 %% Calculate powder average spectrum
 % We calculate powder spectrum for Q = 0:2.5 Angstrom^-1 100 steps
 % resolution 1000 random Q points for every step. Then we plot the spectrum
 % convoluted with 0.1 meV Gaussian along energy.
 
-FMpowspec = FMchain.powspec(linspace(0,2.5,100),'Evect',linspace(0,4.5,250),'nRand',1000,'hermit',false);
+FMpowspec = FMchain.powspec(linspace(0, 2.5, 100), ...
+    'Evect', linspace(0, 4.5, 250), 'nRand', 1000, 'hermit', false);
 figure;
-sw_plotspec(FMpowspec,'dE',0.1)
+sw_plotspec(FMpowspec, 'dE', 0.1)
 axis([0 2.5 0 4.5]);
 caxis([0 .05]);
 

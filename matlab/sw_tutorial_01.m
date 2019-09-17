@@ -1,10 +1,10 @@
 %% Lattice - Define the crystal structure - Part 1 
-% we create a triangular lattice
+% We create a triangular lattice
 
 tri = spinw;
 
-% give lattice parameters and angles in degree
-tri.genlattice('lat_const',[3 3 4],'angled',[90 90 120])
+% Give lattice parameters and angles in degree
+tri.genlattice('lat_const', [3 3 4], 'angled', [90 90 120])
 
 % plot the lattice
 plot(tri)
@@ -17,14 +17,14 @@ plot(tri)
 %% Atoms  - Define the crystal structure - Part 2
 % we add 1 atom at the origin of the unit cell, spin-3/2 Cr3+ ion
 
-tri.addatom('r',[0 0 0],'S',3/2,'label','MCr3')
-
-swpref.setpref('fontsize',12)
+tri.addatom('r', [0 0 0], 'S', 3/2, 'label', 'MCr3')
+% Make the font easier to read
+swpref.setpref('fontsize', 12)
 plot(tri)
 
 
 %% Define the Spin-Hamiltonian (Exchange Structure)
-% we create an antiferromagnetic first neighbor Hamiltonian
+% We create an antiferromagnetic first neighbor Hamiltonian
 % plus easy plane single ion anisotropy
 % red ellipsoids represent the single ion anistropy on the plot
 % (equienergetic surface)
@@ -32,32 +32,33 @@ plot(tri)
 
 A0 = 0.1;
 
-tri.addmatrix('label','J1','value',1)
-tri.addmatrix('label','A','value',[0 0 0;0 0 0;0 0 A0])
+tri.addmatrix('label', 'J1', 'value', 1)
+tri.addmatrix('label', 'A', 'value', [0 0 0;0 0 0;0 0 A0])
 
 
 tri.gencoupling
 
-tri.addcoupling('mat','J1','bond',1)
+tri.addcoupling('mat', 'J1', 'bond', 1)
 tri.addaniso('A')
 
 % Make good quality plot
-swpref.setpref('nmesh',5,'npatch',10)
+swpref.setpref('nmesh', 5, 'npatch', 10)
 % Play with the 'nmesh' property. 
 
-plot(tri,'range',[3 3 1/2],'cellMode','inside')
+plot(tri, 'range', [3 3 1/2], 'cellMode', 'inside')
 
 
 %% Define the Magnetic structure
 % the ground state magnetic structure of the above Hamltonian is a spiral,
-% with propagation vector of (1/3,1/3,0). We define the plane of the
+% with propagation vector of (1/3, 1/3, 0). We define the plane of the
 % spiral as the ab plane
 % Careful: the given spin vector is column vector!
 % What are the angles between neares neighbor moments?
 
-tri.genmagstr('mode','helical','S',[1;0;0],'k',[1/3 1/3 0],'n',[0 0 1],'nExt',[1 1 1])
+tri.genmagstr('mode', 'helical', 'S', [1; 0; 0], ...
+    'k', [1/3 1/3 0], 'n', [0 0 1], 'nExt', [1 1 1])
 
-plot(tri,'range',[3 3 1/2],'cellMode','inside','magColor','red')
+plot(tri, 'range', [3 3 1/2], 'cellMode', 'inside', 'magColor', 'red')
 
 
 %% Calculate the spin-wave dispersion
@@ -69,10 +70,11 @@ plot(tri,'range',[3 3 1/2],'cellMode','inside','magColor','red')
 % Did you got any warning?
 %
 
-spec = tri.spinwave({[0 0 0] [1 1 0] 500});
+spec = tri.spinwave({[0 0 0], [1 1 0], 500});
 
 figure
-sw_plotspec(spec,'mode','disp','imag',true,'colormap',[0 0 0],'colorbar',false)
+sw_plotspec(spec, 'mode', 'disp', 'imag', true, ...
+    'colormap', [0 0 0], 'colorbar', false)
 axis([0 1 0 5])
 
 %% Spin-Spin correlation functions
@@ -99,11 +101,11 @@ axis([0 1 0 5])
 %
 
 %spec = sw_egrid(spec,'component','Sperp','Evect',0:0.01:5.5);
-spec = sw_egrid(spec,'component',{'Sxx+Syy' 'Szz'},'Evect',0:0.01:5);
+spec = sw_egrid(spec, 'component', {'Sxx+Syy', 'Szz'}, 'Evect', 0:0.01:5);
 %spec = sw_egrid(spec,'component','Syz','Evect',0:0.01:5);
 
 figure
-sw_plotspec(spec,'mode','color','dE',0.2,'imag',false)
+sw_plotspec(spec, 'mode', 'color', 'dE', 0.2, 'imag', false)
 %hold on
 %sw_plotspec(spec,'mode','disp','color','k','linestyle','-')
 axis([0 1 0 5.5])
@@ -138,17 +140,17 @@ caxis([0 3])
 triNew = copy(tri);
 tri2   = triNew;
 
-triNew.genmagstr('mode','random','next',[3 3 1])
-triNew.optmagsteep('nRun',1e4)
+triNew.genmagstr('mode', 'random', 'next', [3 3 1])
+triNew.optmagsteep('nRun', 1e4)
 % Converged?
 
-triNew.genmagstr('mode','rotate','n',[0 0 1])
+triNew.genmagstr('mode', 'rotate', 'n', [0 0 1])
 
-phi1 = atan2(triNew.magstr.S(2,1),triNew.magstr.S(1,1));
+phi1 = atan2(triNew.magstr.S(2, 1), triNew.magstr.S(1, 1));
 
-triNew.genmagstr('mode','rotate','n',[0 0 1],'phi',-phi1)
+triNew.genmagstr('mode', 'rotate', 'n', [0 0 1], 'phi', -phi1)
 
-plot(triNew,'range',[3 3 1])
+plot(triNew, 'range', [3 3 1])
 
 % How does the magnetic structures compare? Are they the same? Why?
 %
@@ -166,21 +168,19 @@ tri2.magstr
 % Why are there vertical lines in the dispersion? Is it a bug?
 %
 
-spec = tri.spinwave({[0 0 0] [1 1 0] 500},'hermit',false);
+spec = tri.spinwave({[0 0 0], [1 1 0], 500}, 'hermit', false);
 
 figure
-subplot(2,1,1)
-sw_plotspec(spec,'mode','disp','imag',true,'colormap',[0 0 0])
+subplot(2, 1, 1)
+sw_plotspec(spec, 'mode', 'disp', 'imag', true, 'colormap', [0 0 0])
 colorbar off
 axis([0 1 0 5])
 
 % spin-spin correlation functions
-spec = sw_egrid(spec,'component','Sperp','Evect',0:0.01:5.5);
+spec = sw_egrid(spec, 'component', 'Sperp', 'Evect', 0:0.01:5.5);
 
-subplot(2,1,2)
-sw_plotspec(spec,'mode','color','dE',0.2,'imag',false)
+subplot(2, 1, 2)
+sw_plotspec(spec, 'mode', 'color', 'dE', 0.2, 'imag', false)
 axis([0 1 0 5.5])
 caxis([0 3])
 colormap jet
-
-
