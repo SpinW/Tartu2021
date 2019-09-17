@@ -168,7 +168,7 @@ tri2.magstr
 % Why are there vertical lines in the dispersion? Is it a bug?
 %
 
-spec = tri.spinwave({[0 0 0], [1 1 0], 500}, 'hermit', false);
+spec = triNew.spinwave({[0 0 0], [1 1 0], 500}, 'hermit', false);
 
 figure
 subplot(2, 1, 1)

@@ -116,7 +116,7 @@ plot(tri)</code></pre>
                 $$
                 H = \sum_{mi,nj} \mathbf{S}_{mi}^T \cdot J_{mi} \cdot \mathbf{S}_{nj} + \sum_{mi}\mathbf{S}_{mi}^T \cdot A_i \cdot \mathbf{S}_{mi}
                 $$
-                <p>Where there is only one interaction of value <code>J = 1</code> and easy plane single ion anisotropy <code>A = -0.1</code></p>
+                <p>Where there is only one interaction of value <code>J = 1</code> and easy plane single ion anisotropy <code>A = 0.1</code></p>
             </content>
         </div>
     </section>
@@ -131,7 +131,7 @@ plot(tri)</code></pre>
             <h2>Creating the Spin-Hamiltonian</h2>
             <p>We create implement this in code with:</p>
             <figure class="code">
-                    <pre><code class="matlab">A0 = -0.1;
+                    <pre><code class="matlab">A0 = 0.1;
 J1 = 1;
 tri.addmatrix('label','J1','value',J1)
 tri.addmatrix('label','A','value',[0 0 0;0 0 0;0 0 A0])</code></pre>
@@ -202,9 +202,9 @@ axis([0 1 0 5])</code></pre>
                 <h2>Calculating the spin-spin correlations</h2>
                 <p>The spin-spin correlations are already calculated, however it contains 9 numbers per Q-point per mode. It is not possible to show this on a single plot. But:</p>
                 <ol>
-                    <li>we can calculate the neutron scattering cross section</li>
-                    <li>we can select one of the components $S^{\alpha\beta}(\mathbf{Q},\omega)$</li>
-                    <li>we can sum up the diagonal $S^{\alpha\alpha}(\mathbf{Q},\omega)$</li>
+                    <li>We can calculate the neutron scattering cross section</li>
+                    <li>We can select one of the components $S^{\alpha\beta}(\mathbf{Q},\omega)$</li>
+                    <li>We can sum up the diagonal $S^{\alpha\alpha}(\mathbf{Q},\omega)$<br></li>
                 </ol>
                 <figure class="code">
                     <div id="edit" contenteditable="true">
@@ -240,7 +240,7 @@ caxis([0 3])</code></pre></div>
             </div>
             <content>
                 <h2>$k = 0$ magnetic structure</h2>
-                <p>Duplicate the original object using the <code>.copy()</code> command,<br>/p>
+                <p>Duplicate the original object using the <code>.copy()</code> command,<br></p>
                 <figure class="code">
                     <pre><code class="matlab">triNew = copy(tri);
 triNew.genmagstr('mode','rotate','n',[0 0 1])
@@ -252,7 +252,7 @@ plot(triNew,'range',[3 3 1])</code></pre>
                 <p>Compare the energy per spin of the old magnetic structure and the new magnetic structure using the
                     <code>spinw.energy()</code> function.</p>
                 <h3>Questions:</h3>
-                <p><i>Why are we using the <code>.copy()</code> command?<br>How does the magnetic structures compare?<br>Are they the same?</i></p>
+                <p><i>Why are we using the <code>.copy()</code> command?<br>How does the magnetic structures compare?<br>Are they the same? Why the rotation?</i></p>
             </content>
         </div>
     </section>
