@@ -146,4 +146,14 @@ FMspecSymbolic = FMchainSymbolic.spinwave();
 FMspecSymbolic.omega(1)
 % Notice we get 2 solutions, for +'ve and -ve energies.
 
+% We can also visualise the result.
+h  = linspace(0, 1, 501);
+Ja = -1;
+w = real(eval(FMspecSymbolic.omega(1)));
+
+figure
+plot(h, w)
+xlabel('(H,0,0) in r.l.u.')
+ylabel('Energy (meV)')
+title('Spin wave dispersion of FM chain, Ja = -1, S = 1', 'fontsize', 15)
 
