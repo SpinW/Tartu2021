@@ -68,7 +68,7 @@ FMchain.table('bond', 1:2)
 % spin-spin exchange interaction: J*S(i)*S(i+1). And plot the crystal
 % structure with the added bonds.
  
-FMchain.addmatrix('value', -eye(3), 'label', 'Ja', 'color', 'green')
+FMchain.addmatrix('value', -1, 'label', 'Ja', 'color', 'green')
 % Notice we have created a 3x3 matrix for the exchange. This can be used
 % for arbitary exchanges. If a single value is used, a heisenberg exchange
 % is created.
@@ -105,7 +105,7 @@ FMchain.energy()
 % the value of the correlation function with the 1-Q^2 neutron scattering
 % cross section in units of hbar/spin.
 
-FMspec = FMchain.spinwave({[0 0 0], [1 0 0]});
+FMspec = FMchain.spinwave({[0 0 0], [1 0 0], 200});
 FMspec = sw_neutron(FMspec); 
 FMspec = sw_egrid(FMspec, 'component', 'Sperp');
 
@@ -125,6 +125,7 @@ swplot.subfigure(1, 3, 1)
 
 FMpowspec = FMchain.powspec(linspace(0, 2.5, 100), ...
     'Evect', linspace(0, 4.5, 250), 'nRand', 1000, 'hermit', false);
+
 figure;
 sw_plotspec(FMpowspec, 'dE', 0.1)
 axis([0 2.5 0 4.5]);
