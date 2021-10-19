@@ -25,4 +25,4 @@ The presentation can be found online at [http://spinw.org/Tartu2021](http://spin
 
 An up to date pdf can be found at [http://spinw.org/Tartu2019/Tartu2021.pdf](http://spinw.org/Tartu2021/Tartu2021.pdf)
 
-The PDF status is [![Build Status](https://travis-ci.org/SpinW/Tartu2021.svg?branch=master)](https://travis-ci.org/SpinW/Tartu2021)
+The deployment status is [![Build Status](https://github.com/SpinW/Tartu2021/actions/workflows/pdfgen.yml/badge.svg)](https://github.com/SpinW/Tartu2021/actions/workflows/pdfgen.yml)
