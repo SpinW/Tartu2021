@@ -1,0 +1,35 @@
+name: Generate PDF
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest    
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+    - name: Check-out repository
+      uses: actions/checkout@v2
+      
+    - name: Create PDF
+      run: |
+        npm install -g decktape
+        sleep 2m
+        echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+        decktape reveal http://www.spinw.org/${ env.REPOSITORY_NAME } ${ env.REPOSITORY_NAME }.pdf
+
+    - name: Push
+      env:
+        GIT_USERNAME: action
+        GIT_EMAIL: action@github.com
+      run: |
+        git config --local user.name "${{ env.GIT_USERNAME }}"
+        git config --local user.email "${{ env.GIT_EMAIL }}"
+        git add .
+        if [[ `git status --porcelain` ]]; then
+          git commit -m "Github Actions Automatically Built in `date +"%Y-%m-%d %H:%M"`"
+          git push
+        fi
