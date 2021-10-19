@@ -1,7 +1,7 @@
 
 # Tartu 2021
 
-This is the presentation given at the NNSP-SwedNess Neutron School 2019, Tartu.
+This is the presentation given at the NNSP-SwedNess Neutron School 2021, unfortunately not in Tartu but on Zoom.
 
 ### Part 1
 
