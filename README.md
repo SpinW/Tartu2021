@@ -1,5 +1,5 @@
 
-# Tartu 2019
+# Tartu 2021
 
 This is the presentation given at the NNSP-SwedNess Neutron School 2019, Tartu.
 
@@ -18,11 +18,11 @@ Using SpinW to model magnetic materials from the OMDB.
 ## Tutors
 
 - Simon Ward - ESS DMSC
-- Johan Hellsvik - Senior Postodc Nordita
+- Johan Hellsvik - PDC Center for High Performance Computing, KTH
 
 ## Viewing
-The presentation can be found online at [http://spinw.org/Tartu2019](http://spinw.org/Tartu2019)
+The presentation can be found online at [http://spinw.org/Tartu2021](http://spinw.org/Tartu2019)
 
-An up to date pdf can be found at [http://spinw.org/Tartu2019/Tartu2019.pdf](http://spinw.org/Tartu2019/Tartu2019.pdf)
+An up to date pdf can be found at [http://spinw.org/Tartu2019/Tartu2021.pdf](http://spinw.org/Tartu2021/Tartu2021.pdf)
 
-The PDF status is [![Build Status](https://travis-ci.org/SpinW/Tartu2019.svg?branch=master)](https://travis-ci.org/SpinW/Tartu2019)
+The PDF status is [![Build Status](https://travis-ci.org/SpinW/Tartu2021.svg?branch=master)](https://travis-ci.org/SpinW/Tartu2021)
