@@ -18,8 +18,9 @@ jobs:
       run: |
         npm install -g decktape
         sleep 2m
-        echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
-        decktape reveal http://www.spinw.org/${ env.REPOSITORY_NAME } ${ env.REPOSITORY_NAME }.pdf
+        export REPO_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')
+
+       decktape reveal http://www.spinw.org/${REPO_NAME} ${REPO_NAME}.pdf
 
     - name: Push
       env:
