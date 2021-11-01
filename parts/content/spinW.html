@@ -1,262 +1,262 @@
 <section>
-    <section class="subsection color--radiant" id="spinWhead">
-        <div class="grid-wrapper">
+<section class="subsection color--radiant" id="spinWhead">
+    <div class="grid-wrapper">
+        <div class="logo"></div>
+        <h1>Introduction to SpinW</h1>
+        <div class="description">
+            So, how does SpinW work?
+        </div>
+    </div>
+</section>
+
+<section class="blank" id="SpinWHamiltonian3">
+    <div class="grid-wrapper">
+        <div class="header">
             <div class="logo"></div>
-            <h1>Introduction to SpinW</h1>
-            <div class="description">
-                So, how does SpinW work?
-            </div>
+            <div class="section">SpinW features</div>
         </div>
-    </section>
+        <content>
+            <h2><br>SpinW</h2>
+            <ul>
+                <li>Solves the general spin Hamiltonian</li>
+                <li>Calculates spin-spin correlation function</li>
+                <li>Numerical and symbolical</li>
+                <li>Can apply crystal symmetry operators on the Hamiltonian - Solving single-q magnetic structures
+                </li>
+                <li>Solves multi-q magnetic structures on a magnetic supercell</li>
+                <li>Open source, runs on MATLAB and now python</li>
+                <li>More information: <a href="http://www.spinw.org" target="_blank">http://www.spinw.org</a></li>
+                <li>Download from: <a href="https://www.github.com/spinw/spinw" target="_blank">https://www.github.com/spinw/spinw</a>
+                </li>
+            </ul>
+        </content>
+    </div>
+</section>
 
-    <section class="blank" id="SpinWHamiltonian3">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">SpinW features</div>
-            </div>
-            <content>
-                <h2><br>SpinW</h2>
-                <ul>
-                    <li>Solves the general spin Hamiltonian</li>
-                    <li>Calculates spin-spin correlation function</li>
-                    <li>Numerical and symbolical</li>
-                    <li>Can apply crystal symmetry operators on the Hamiltonian - Solving single-q magnetic structures
-                    </li>
-                    <li>Solves multi-q magnetic structures on a magnetic supercell</li>
-                    <li>Open source, runs on MATLAB and now python</li>
-                    <li>More information: <a href="http://www.spinw.org" target="_blank">http://www.spinw.org</a></li>
-                    <li>Download from: <a href="https://www.github.com/spinw/spinw" target="_blank">https://www.github.com/spinw/spinw</a>
-                    </li>
-                </ul>
-            </content>
+<section class="blank" id="SpinWHamiltonian">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">General Hamiltonian</div>
         </div>
-    </section>
+        <content>
+            <h2>The General Spin Hamiltonian</h2>
+            <p><br>SpinW solves the general spin hamiltonian:<br></p>
+            $$
+            H = \sum_{mi,nj} \mathbf{S}_{mi}^T \cdot J_{mi} \cdot \mathbf{S}_{nj} + \sum_{mi}\mathbf{S}_{mi}^T \cdot
+            A_i \cdot \mathbf{S}_{mi} + \mu_B\mathbf{H}^T\sum_{mi}g_i\mathbf{S}_{mi}
+            $$
+            <p><br>Where:<br></p>
+            <ul>
+                <li>Term 1: Bi-linear interactions between site $i$ and site $j$</li>
+                <li>Term 2: Single ion terms acting on site $i$</li>
+                <li>Term 2: Effect of applied magnetic field on site $i$</li>
+            </ul>
+        </content>
+    </div>
+</section>
 
-    <section class="blank" id="SpinWHamiltonian">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">General Hamiltonian</div>
-            </div>
-            <content>
-                <h2>The General Spin Hamiltonian</h2>
-                <p><br>SpinW solves the general spin hamiltonian:<br></p>
-                $$
-                H = \sum_{mi,nj} \mathbf{S}_{mi}^T \cdot J_{mi} \cdot \mathbf{S}_{nj} + \sum_{mi}\mathbf{S}_{mi}^T \cdot
-                A_i \cdot \mathbf{S}_{mi} + \mu_B\mathbf{H}^T\sum_{mi}g_i\mathbf{S}_{mi}
-                $$
-                <p><br>Where:<br></p>
-                <ul>
-                    <li>Term 1: Bi-linear interactions between site $i$ and site $j$</li>
-                    <li>Term 2: Single ion terms acting on site $i$</li>
-                    <li>Term 2: Effect of applied magnetic field on site $i$</li>
-                </ul>
-            </content>
+<section class="blank" id="SpinWHamiltonian2">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">General Hamiltonian</div>
         </div>
-    </section>
+        <content>
+            <h2>Exchange/Interaction Matrices</h2>
+            <p><br>There are a few matrices of note (that you will use later):<br></p>
+            <ul>
+                <li>
+                    Anisotropic and antisymmetric (Dzyaloshinskii-Moriya) exchange interactions:<br>
+                    $$J_S = \begin{bmatrix} J_x & 0 & 0 \\ 0 & J_y & 0 \\ 0 & 0 & J_z \end{bmatrix} ; J_A =
+                    \begin{bmatrix} 0 & D_z & -D_y \\ -D_z & 0 & D_x \\ D_y & -D_x & 0 \end{bmatrix}$$<br>
+                </li>
+                <li>
+                    Easy-plane and easy-axis anisotropy:<br>
+                    $$A = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & \pm A_0 \end{bmatrix}$$
+                </li>
+            </ul>
 
-    <section class="blank" id="SpinWHamiltonian2">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">General Hamiltonian</div>
-            </div>
-            <content>
-                <h2>Exchange/Interaction Matrices</h2>
-                <p><br>There are a few matrices of note (that you will use later):<br></p>
-                <ul>
-                    <li>
-                        Anisotropic and antisymmetric (Dzyaloshinskii-Moriya) exchange interactions:<br>
-                        $$J_S = \begin{bmatrix} J_x & 0 & 0 \\ 0 & J_y & 0 \\ 0 & 0 & J_z \end{bmatrix} ; J_A =
-                        \begin{bmatrix} 0 & D_z & -D_y \\ -D_z & 0 & D_x \\ D_y & -D_x & 0 \end{bmatrix}$$<br>
-                    </li>
-                    <li>
-                        Easy-plane and easy-axis anisotropy:<br>
-                        $$A = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & \pm A_0 \end{bmatrix}$$
-                    </li>
-                </ul>
+        </content>
+    </div>
+</section>
 
-            </content>
+<section class="blank" id="SpinWRequires0">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">SpinW's implementation of the general Hamiltonian</div>
         </div>
-    </section>
+        <content>
+            <h2>Creating a SpinW object.</h2>
+            <p><br>Assuming that everything is properly installed$^*$, you can create an empty <code>spinw</code>
+                object with the following:<br></p>
+            <figure class="code">
+                <pre><code class="matlab">s = spinw();</code></pre>
+            </figure>
+            <p><br>You can also create populated <code>spinw</code> objects from cif files.<br></p>
+            <figure class="code">
+                <pre><code class="matlab">s = spinw('./my_crystal.cif');</code></pre>
+            </figure>
+        <footer>
+            $*$ More on this later.....
+        </footer>
+    </div>
+</section>
 
-    <section class="blank" id="SpinWRequires0">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">SpinW's implementation of the general Hamiltonian</div>
-            </div>
-            <content>
-                <h2>Creating a SpinW object.</h2>
-                <p><br>Assuming that everything is properly installed$^*$, you can create an empty <code>spinw</code>
-                    object with the following:<br></p>
-                <figure class="code">
-                    <pre><code class="matlab">s = spinw();</code></pre>
-                </figure>
-                <p><br>You can also create populated <code>spinw</code> objects from cif files.<br></p>
-                <figure class="code">
-                    <pre><code class="matlab">s = spinw('./my_crystal.cif');</code></pre>
-                </figure>
-            <footer>
-                $*$ More on this later.....
-            </footer>
+<section class="blank" id="SpinWRequires">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">SpinW's implementation of the general Hamiltonian</div>
         </div>
-    </section>
+        <content>
+            <h2>The General Spin Hamiltonian</h2>
+            <p><br>Necessary input information:<br></p>
+            $$
+            H = \sum_{mi,nj} \mathbf{S}_{mi}^T \cdot J_{mi} \cdot \mathbf{S}_{nj} + \sum_{mi}\mathbf{S}_{mi}^T \cdot
+            A_i \cdot \mathbf{S}_{mi} + \mu_B\mathbf{H}^T\sum_{mi}g_i\mathbf{S}_{mi}
+            $$
+            <p><br>In order to solve the above Hamiltonian in SpinW you need the following components:<br></p>
+            <ul>
+                <li><b>Crystal structure</b>: Cell lengths/angles, Symmetry.</li>
+                <li><b>Exchange structure</b>: Atomic sites, Interaction matrices, Single ion matrices.</li>
+                <li><b>Magnetic Structure</b>: Spin vectors in the unit cell.$^*$</li>
+            </ul>
+        </content>
+        <footer>
+            $*$This is often the hardest part
+        </footer>
+    </div>
+</section>
 
-    <section class="blank" id="SpinWRequires">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">SpinW's implementation of the general Hamiltonian</div>
-            </div>
-            <content>
-                <h2>The General Spin Hamiltonian</h2>
-                <p><br>Necessary input information:<br></p>
-                $$
-                H = \sum_{mi,nj} \mathbf{S}_{mi}^T \cdot J_{mi} \cdot \mathbf{S}_{nj} + \sum_{mi}\mathbf{S}_{mi}^T \cdot
-                A_i \cdot \mathbf{S}_{mi} + \mu_B\mathbf{H}^T\sum_{mi}g_i\mathbf{S}_{mi}
-                $$
-                <p><br>In order to solve the above Hamiltonian in SpinW you need the following components:<br></p>
-                <ul>
-                    <li><b>Crystal structure</b>: Cell lengths/angles, Symmetry.</li>
-                    <li><b>Exchange structure</b>: Atomic sites, Interaction matrices, Single ion matrices.</li>
-                    <li><b>Magnetic Structure</b>: Spin vectors in the unit cell.$^*$</li>
-                </ul>
-            </content>
-            <footer>
-                $*$This is often the hardest part
-            </footer>
+<section class="blank" id="SpinWRequiresCrystal">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">SpinW's implementation of the general Hamiltonian</div>
         </div>
-    </section>
-
-    <section class="blank" id="SpinWRequiresCrystal">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">SpinW's implementation of the general Hamiltonian</div>
-            </div>
-            <content>
-                <h2>Crystal structure</h2>
-                <p><br>The crystal structure is usually the easiest to determine, commonly by x-rays or powder neutron
-                    diffraction.<br></p>
-                <ul>
-                    <li><b>Lengths</b>: $a$, $b$, $c$, given in Angstroms</li>
-                    <li><b>Angles</b>: $\alpha$, $\beta, $\gamma$, given in degrees or radians with an additional flag.
-                    </li>
-                    <li><b>Symmetry</b>:Given as a symbol/number from the international table of crystallography or a string of symmetry operations.</li>
-                </ul>
-                <p><br>This information is added to the object via:<br></p>
-                <figure class="code">
-                    <pre><code class="matlab">s.genlattice('lat_const',[3 3 4],'angled',[90 90 120],'spgr','P 6')
+        <content>
+            <h2>Crystal structure</h2>
+            <p><br>The crystal structure is usually the easiest to determine, commonly by x-rays or powder neutron
+                diffraction.<br></p>
+            <ul>
+                <li><b>Lengths</b>: $a$, $b$, $c$, given in Angstroms</li>
+                <li><b>Angles</b>: $\alpha$, $\beta, $\gamma$, given in degrees or radians with an additional flag.
+                </li>
+                <li><b>Symmetry</b>:Given as a symbol/number from the international table of crystallography or a string of symmetry operations.</li>
+            </ul>
+            <p><br>This information is added to the object via:<br></p>
+            <figure class="code">
+                <pre><code class="matlab">s.genlattice('lat_const',[3 3 4],'angled',[90 90 120],'spgr','P 6')
 s.genlattice('lat_const',[3 3 4],'angled',[90 90 120],'spgr',168)
 s.genlattice('lat_const',[3 3 4],'angled',[90 90 120],'spgr','-y,x-y,z; -x,-y,z','label','R -3 m')</code></pre>
-                </figure>
-            </content>
-        </div>
-    </section>
+            </figure>
+        </content>
+    </div>
+</section>
 
-    <section class="blank" id="SpinWRequiresExchange">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">SpinW's implementation of the general Hamiltonian</div>
-            </div>
-            <content>
-                <h2>Adding Atoms</h2>
-                <p><br>Object now needs some atoms which may have/not have spin. To add a magnetic atom with $S=1$ at position $r=(0,0,0)$ and a
-                    non-magnetic one at $r=(1/2,0,0)$ with red and blue color respectively use the following command:<br></p>
-                <figure class="code">
-                    <pre><code class="matlab">s.addatom('r',[0 1/2; 0 0; 0 0],'S',[1 0],'color',{'red' 'blue'}, 'label', {'Co', 'H'})</code></pre>
-                </figure><br>
-                <h2>Adding Matrices</h2>
-                <p><br>Before you can say how atoms are linked or their properties, you need to add matrices to define
-                    the property. For example, an exchange matrix ($J_1$) and an easy axis matrix ($K_0$).<br></p>
-                <figure class="code">
-                    <pre><code class="matlab">s.addmatrix('value', 1, 'label', 'J1');
+<section class="blank" id="SpinWRequiresExchange">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">SpinW's implementation of the general Hamiltonian</div>
+        </div>
+        <content>
+            <h2>Adding Atoms</h2>
+            <p><br>Object now needs some atoms which may have/not have spin. To add a magnetic atom with $S=1$ at position $r=(0,0,0)$ and a
+                non-magnetic one at $r=(1/2,0,0)$ with red and blue color respectively use the following command:<br></p>
+            <figure class="code">
+                <pre><code class="matlab">s.addatom('r',[0 1/2; 0 0; 0 0],'S',[1 0],'color',{'red' 'blue'}, 'label', {'Co', 'H'})</code></pre>
+            </figure><br>
+            <h2>Adding Matrices</h2>
+            <p><br>Before you can say how atoms are linked or their properties, you need to add matrices to define
+                the property. For example, an exchange matrix ($J_1$) and an easy axis matrix ($K_0$).<br></p>
+            <figure class="code">
+                <pre><code class="matlab">s.addmatrix('value', 1, 'label', 'J1');
 s.addmatrix('value', [0, 0, -0.1], 'label', 'K0');</code></pre>
-                </figure>
-            </content>
-        </div>
-    </section>
+            </figure>
+        </content>
+    </div>
+</section>
 
-    <section class="blank" id="SpinWRequiresExchange2">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">SpinW's implementation of the general Hamiltonian</div>
-            </div>
-            <content>
-                <h2>Assigning Matrices</h2>
-                <p><br>Now you have all the atoms in the unit cell, you have to calculate all the possible exchanges.
-                    Luckily, symmetry is used in this calculation. Possible couplings are generated and can be viewed with:<br></p>
-                <figure class="code">
-                    <pre><code class="matlab">s.gencoupling()
+<section class="blank" id="SpinWRequiresExchange2">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">SpinW's implementation of the general Hamiltonian</div>
+        </div>
+        <content>
+            <h2>Assigning Matrices</h2>
+            <p><br>Now you have all the atoms in the unit cell, you have to calculate all the possible exchanges.
+                Luckily, symmetry is used in this calculation. Possible couplings are generated and can be viewed with:<br></p>
+            <figure class="code">
+                <pre><code class="matlab">s.gencoupling()
 s.table('bond',1:3)</code></pre>
-                </figure>
-                <p><br>If you want to add our exchange $J_1$ as defined earlier to bond 2 in the list:<br></p>
-                <figure class="code">
-                    <pre><code class="matlab">s.addcoupling('mat','J1','bond',2)</code></pre>
-                </figure>
-                <p><br>And single ion anisotropy defined by $A_0$<br></p>
-                <figure class="code">
-                    <pre><code class="matlab">s.addaniso('A0')</code></pre>
-                </figure><br>
-            </content>
-        </div>
-    </section>
+            </figure>
+            <p><br>If you want to add our exchange $J_1$ as defined earlier to bond 2 in the list:<br></p>
+            <figure class="code">
+                <pre><code class="matlab">s.addcoupling('mat','J1','bond',2)</code></pre>
+            </figure>
+            <p><br>And single ion anisotropy defined by $A_0$<br></p>
+            <figure class="code">
+                <pre><code class="matlab">s.addaniso('A0')</code></pre>
+            </figure><br>
+        </content>
+    </div>
+</section>
 
-    <section class="blank" id="SpinWRequiresMagneticStructure">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">SpinW's implementation of the general Hamiltonian</div>
-            </div>
-            <content>
-                <h2>Defining the magnetic structures</h2>
-                <p><br>As alluded to earlier, defining the magnetic structure is one of the hardest aspects of
-                    <code>spinw</code> and could easily take a 2-hour lecture.<br></p>
-                <p><b>DON'T PANIC!</b></p>
-                <p><br>We will introduce a few concepts in the examples and there is a presentation <a
-                        href="https://spinw.org/magneticStructurePresentation" target="_blank">here</a> which goes into
-                    more detail. Some important points to remember are:
-                    <br></p>
-                <ul>
-                    <li>Magnetic structures can be extracted from powder diffraction measurements.</li>
-                    <li>In real life the obtained magnetic structure will probably need tweaking.</li>
-                    <li>SpinW has spin-energy minimization codes to help you.</li>
-                    <br>
-                </ul>
-            </content>
+<section class="blank" id="SpinWRequiresMagneticStructure">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">SpinW's implementation of the general Hamiltonian</div>
         </div>
-    </section>
+        <content>
+            <h2>Defining the magnetic structures</h2>
+            <p><br>As alluded to earlier, defining the magnetic structure is one of the hardest aspects of
+                <code>spinw</code> and could easily take a 2-hour lecture.<br></p>
+            <p><b>DON'T PANIC!</b></p>
+            <p><br>We will introduce a few concepts in the examples and there is a presentation <a
+                    href="https://spinw.org/magneticStructurePresentation" target="_blank">here</a> which goes into
+                more detail. Some important points to remember are:
+                <br></p>
+            <ul>
+                <li>Magnetic structures can be extracted from powder diffraction measurements.</li>
+                <li>In real life the obtained magnetic structure will probably need tweaking.</li>
+                <li>SpinW has spin-energy minimization codes to help you.</li>
+                <br>
+            </ul>
+        </content>
+    </div>
+</section>
 
-    <section class="blank" id="genmagstr1">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">SpinW's implementation of the general Hamiltonian</div>
-            </div>
-            <content>
-                <h3> Generating a magnetic structure </h3> <br>
-                <p> Rather than inputting the magnetic structure directly, it is recommended to use
-                    the <code>spinw.genmagstr()</code> function to generate the magnetic structure.</p>
-                <p> This function checks your input for errors and also provides short-cuts for common
-                    use-cases, using various <code>mode</code>s:</p>
-                <table style="width:70%">
-                    <tr> <td><code>helical</code></td> <td>single-$k$ helix</td> </tr>
-                    <tr> <td><code>fourier</code></td> <td>single-$k$ helix or modulated structure</td> </tr>
-                    <tr> <td><code>rotate</code></td> <td>uniform rotation of all moments</td> </tr>
-                    <tr> <td><code>direct</code></td> <td>direct input of structure using all fields <code>k</code>, <code>F</code>, <code>nExt</code> </td> </tr>
-                    <tr> <td><code>tile</code></td> <td>tile a magnetic supercell</td> </tr>
-                    <tr> <td><code>func</code></td> <td>using a function to generate <code>k</code>, <code>F</code>, <code>nExt</code></td> </tr>
-                    <tr> <td><code>random</code></td> <td>random moments</td> </tr>
-                </table>
-                <p> <code>genmagstr()</code> always respects <code>nExt</code>, so a combination of an input <code>nExt</code> and <code>k</code> will
-                    generate a magnetic supercell which is extended first by <code>nExt</code> and then by <code>k</code> </p>
-            </content>
+<section class="blank" id="genmagstr1">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">SpinW's implementation of the general Hamiltonian</div>
         </div>
-    </section>
+        <content>
+            <h3> Generating a magnetic structure </h3> <br>
+            <p> Rather than inputting the magnetic structure directly, it is recommended to use
+                the <code>spinw.genmagstr()</code> function to generate the magnetic structure.</p>
+            <p> This function checks your input for errors and also provides short-cuts for common
+                use-cases, using various <code>mode</code>s:</p>
+            <table style="width:70%">
+                <tr> <td><code>helical</code></td> <td>single-$k$ helix</td> </tr>
+                <tr> <td><code>fourier</code></td> <td>single-$k$ helix or modulated structure</td> </tr>
+                <tr> <td><code>rotate</code></td> <td>uniform rotation of all moments</td> </tr>
+                <tr> <td><code>direct</code></td> <td>direct input of structure using all fields <code>k</code>, <code>F</code>, <code>nExt</code> </td> </tr>
+                <tr> <td><code>tile</code></td> <td>tile a magnetic supercell</td> </tr>
+                <tr> <td><code>func</code></td> <td>using a function to generate <code>k</code>, <code>F</code>, <code>nExt</code></td> </tr>
+                <tr> <td><code>random</code></td> <td>random moments</td> </tr>
+            </table>
+            <p> <code>genmagstr()</code> always respects <code>nExt</code>, so a combination of an input <code>nExt</code> and <code>k</code> will
+                generate a magnetic supercell which is extended first by <code>nExt</code> and then by <code>k</code> </p>
+        </content>
+    </div>
+</section>
 
 <!--    <section class="blank" id="prerequisites">-->
 <!--        <div class="grid-wrapper">-->
@@ -289,76 +289,100 @@ s.table('bond',1:3)</code></pre>
 <!--            </content>-->
 <!--        </div>-->
 <!--    </section>-->
+<section class="quote color--midnight" id="questions">
+    <div class="grid-wrapper">
+        <div class="logo"></div>
+        <blockquote>
+            <p>
+                Does anyone have any questions?
+            </p>
+        </blockquote>
+    </div>
+</section>
 
-    <section class="blank" id="install2">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">Installing via MATLAB</div>
-            </div>
-            <content>
-                <h2>Using the MATLAB package - The easy way</h2>
-                <p>SpinW is now a MATALB add-on and can be downloaded directly from Mathworks.</p>
-                <img src="images/MatlabAddons.png" alt="Addon in the toolbar" style="max-height: inherit">
-                <p>Then search for SpinW and hit install.</p>
-                <p>Verify with <code>s = spinw;</code></p>
-                <h2>Updating:</h2>
-                <p>Add-Ons $\rightarrow$ Check for updates $\rightarrow$ Update</p>
-                <h2>NOTE</h2>
-                <p>This version may not correspond to the <code>sw_update</code> version!</p>
-            </content>
+<section class="blank" id="install2">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Installing via MATLAB</div>
         </div>
-    </section>
+        <content>
+            <h2>Using the MATLAB package - The easy way</h2>
+            <p>SpinW is now a MATALB add-on and can be downloaded directly from Mathworks.</p>
+            <img src="images/MatlabAddons.png" alt="Addon in the toolbar" style="max-height: inherit">
+            <p>Then search for SpinW and hit install.</p>
+            <p>Verify with <code>s = spinw;</code></p>
+            <h2>Updating:</h2>
+            <p>Add-Ons $\rightarrow$ Check for updates $\rightarrow$ Update</p>
+            <h2>NOTE</h2>
+            <p>This version may not correspond to the <code>sw_update</code> version!</p>
+        </content>
+    </div>
+</section>
 
-    <section class="blank" id="install1">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">Installing SpinW</div>
-            </div>
-            <content>
-                <h2>Get the code - The manual way:</h2>
-                <p>SpinW is available at:<br><a href="https://www.github.com/spinw/spinw/releases/latest"
-                                                target="_blank">https://www.github.com/spinw/spinw/releases/latest</a>
-                </p>
+<section class="blank" id="install1">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Installing SpinW</div>
+        </div>
+        <content>
+            <h2>Get the code - The manual way:</h2>
+            <p>SpinW is available at:<br><a href="https://www.github.com/spinw/spinw/releases/latest"
+                                            target="_blank">https://www.github.com/spinw/spinw/releases/latest</a>
+            </p>
+            <br>
+            <h2>Steps:</h2>
+            <ul>
+                <li>Unzip the archive into your preferred directory</li>
+                <li>Open MATLAB and run <code>install_spinw</code> from inside this directory</li>
+                <li>Verify with <code>s = spinw;</code></li>
                 <br>
-                <h2>Steps:</h2>
-                <ul>
-                    <li>Unzip the archive into your preferred directory</li>
-                    <li>Open MATLAB and run <code>install_spinw</code> from inside this directory</li>
-                    <li>Verify with <code>s = spinw;</code></li>
-                    <br>
-                </ul>
-                <h2>Updating:</h2>
-                <p>I am trying to make releases 2-3 times a year. It's always nice to be on the latest code!<br>There is
-                    a self update function <code>sw_update</code><br>This retrieves and installs the package from the
-                    link above.</p>
-                <h2>Developing:</h2>
-                <p>If you want to help develop a feature and contribute, please git clone <a
-                        href="https://www.github.com/spinw/spinw/" target="_blank">https://www.github.com/spinw/spinw.git</a>
-                    and create a pull request (to development branch)</p>
-            </content>
+            </ul>
+            <h2>Updating:</h2>
+            <p>I am trying to make releases 2-3 times a year. It's always nice to be on the latest code!<br>There is
+                a self update function <code>sw_update</code><br>This retrieves and installs the package from the
+                link above.</p>
+            <h2>Developing:</h2>
+            <p>If you want to help develop a feature and contribute, please git clone <a
+                    href="https://www.github.com/spinw/spinw/" target="_blank">https://www.github.com/spinw/spinw.git</a>
+                and create a pull request (to development branch)</p>
+        </content>
+    </div>
+</section>
+
+<section class="blank" id="gettingHelp">
+    <div class="grid-wrapper">
+        <div class="header">
+            <div class="logo"></div>
+            <div class="section">Getting help</div>
         </div>
-    </section>
+        <content>
 
-    <section class="blank" id="gettingHelp">
-        <div class="grid-wrapper">
-            <div class="header">
-                <div class="logo"></div>
-                <div class="section">Getting help</div>
-            </div>
-            <content>
+            <h2>Function help</h2>
+            <p>For any function that starts with <code>sw_*</code> use:<br><code>help sw_*</code></p>
 
-                <h2>Function help</h2>
-                <p>For any function that starts with <code>sw_*</code> use:<br><code>help sw_*</code></p>
+            <h2>SpinW class methods</h2>
+            <p>for spinw class methods use: <br><code>help spinw.function_name</code>.<br>For help on plotting
+                commands, use:<br><code>help swplot</code>.</p>
+            <h2>Online Documentation</h2>
+            <p>All help can be found on <a href="http://www.spinw.org" target="_blank">http://www.spinw.org</a> or
+                <a href="https://spinw.github.io/spinwdoc" target="_blank">https://spinw.github.io/spinwdoc</a></p>
+        </content>
+    </div>
+</section>
 
-                <h2>SpinW class methods</h2>
-                <p>for spinw class methods use: <br><code>help spinw.function_name</code>.<br>For help on plotting
-                    commands, use:<br><code>help swplot</code>.</p>
-                <h2>Online Documentation</h2>
-                <p>All help can be found on <a href="http://www.spinw.org" target="_blank">http://www.spinw.org</a> or
-                    <a href="https://spinw.github.io/spinwdoc" target="_blank">https://spinw.github.io/spinwdoc</a></p>
-            </content>
-        </div>
-    </section>
+
+<section class="quote color--midnight" id="learnByDoing">
+    <div class="grid-wrapper">
+        <div class="logo"></div>
+        <blockquote>
+            <p>
+                For the things we have to learn before we can do them, we learn by doing them.
+            </p>
+            <hr>
+            <cite>Aristotle</cite>
+        </blockquote>
+    </div>
+</section>
 </section>
