@@ -23,6 +23,6 @@ Using SpinW to model magnetic materials from the OMDB.
 ## Viewing
 The presentation can be found online at [http://spinw.org/Tartu2021](http://spinw.org/Tartu2019)
 
-An up to date pdf can be found at [http://spinw.org/Tartu2019/Tartu2021.pdf](http://spinw.org/Tartu2021/Tartu2021.pdf)
+An up to date pdf can be found at [http://spinw.org/Tartu2021/Tartu2021.pdf](http://spinw.org/Tartu2021/Tartu2021.pdf)
 
 The deployment status is [![Build Status](https://github.com/SpinW/Tartu2021/actions/workflows/pdfgen.yml/badge.svg)](https://github.com/SpinW/Tartu2021/actions/workflows/pdfgen.yml)
