@@ -21,7 +21,7 @@ Using SpinW to model magnetic materials from the OMDB.
 - Johan Hellsvik - PDC Center for High Performance Computing, KTH
 
 ## Viewing
-The presentation can be found online at [http://spinw.org/Tartu2021](http://spinw.org/Tartu2019)
+The presentation can be found online at [http://spinw.org/Tartu2021](http://spinw.org/Tartu2021)
 
 An up to date pdf can be found at [http://spinw.org/Tartu2021/Tartu2021.pdf](http://spinw.org/Tartu2021/Tartu2021.pdf)
 
